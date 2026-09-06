@@ -52,7 +52,7 @@ body::after{
   position:fixed;z-index:10;background:var(--panel);
   border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
 }
-.corner{position:relative}
+/* 注意：.corner 不可设置 position（会覆盖 .panel 的 fixed，导致面板全部掉入页面流） */
 .corner::before,.corner::after{
   content:'';position:absolute;width:9px;height:9px;pointer-events:none;
   border-color:var(--line2);border-style:solid;
@@ -443,7 +443,7 @@ body::after{
   <b>点击部件</b> 查看结构详情
 </div>
 
-<div id="ver">MUQING · AXIS-9 · V2.3</div>
+<div id="ver">MUQING · AXIS-9 · V2.4</div>
 
 <div id="tooltip"><span class="tt-code" id="ttCode"></span><span id="ttName"></span></div>
 <div id="partLabel"><div class="pl-tag" id="plText"></div><div class="pl-line"></div></div>
@@ -454,7 +454,7 @@ body::after{
     <div>
       <div class="i-studio">沐晴制作 · MUQING WORKS</div>
       <div class="i-title">AXIS-9 高涵道比涡扇发动机</div>
-      <div class="i-sub">交互式 3D 结构展台 · INTERACTIVE EXHIBIT · V2.3</div>
+      <div class="i-sub">交互式 3D 结构展台 · INTERACTIVE EXHIBIT · V2.4</div>
     </div>
     <button class="i-close" id="iClose">✕</button>
   </div>
