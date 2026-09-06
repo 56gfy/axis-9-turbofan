@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AXIS-9 高涵道比涡扇发动机 · 交互式结构展台</title>
+<title>沐晴制作 · 飞机发动机 3D 交互式结构展台</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -163,9 +163,20 @@ body::after{
 /* ---------- 控制台 ---------- */
 #console{
   bottom:26px;left:50%;transform:translateX(-50%);
-  display:flex;align-items:center;gap:18px;padding:12px 20px;flex-wrap:wrap;justify-content:center;
+  display:flex;align-items:center;gap:12px;padding:8px 16px;
   max-width:min(94vw,880px);
 }
+#console .c-body{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;
+}
+#console.collapsed .c-body{display:none}
+#console.collapsed{padding:5px 14px}
+#cToggle{
+  background:none;border:1px solid var(--line);color:var(--dim);cursor:pointer;
+  font-family:var(--sans);font-size:10.5px;letter-spacing:.14em;padding:5px 10px;
+  transition:.18s;white-space:nowrap;
+}
+#cToggle:hover{color:var(--amber);border-color:rgba(255,180,84,.5)}
 .c-group{display:flex;align-items:center;gap:8px}
 .c-label{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.22em;margin-right:2px}
 .btn{
@@ -183,7 +194,7 @@ body::after{
 .chip.on{color:var(--cyan);border-color:rgba(77,227,193,.55)}
 .chip.on::before{background:var(--cyan);box-shadow:0 0 7px var(--cyan)}
 .chip:hover{color:var(--txt)}
-#exSlider{-webkit-appearance:none;appearance:none;width:200px;height:18px;background:transparent;cursor:pointer}
+#exSlider{-webkit-appearance:none;appearance:none;width:140px;height:18px;background:transparent;cursor:pointer}
 #exSlider::-webkit-slider-runnable-track{height:3px;background:linear-gradient(90deg,var(--cyan),var(--amber));opacity:.85}
 #exSlider::-webkit-slider-thumb{
   -webkit-appearance:none;width:15px;height:15px;margin-top:-6px;border-radius:2px;
@@ -235,15 +246,15 @@ body::after{
   #detail{width:min(86vw,328px);right:16px}
   #readout{top:16px;right:16px;gap:14px;padding:8px 12px}
   #brand{top:16px;left:16px;padding:12px 14px}
-  #console{bottom:14px;gap:10px;padding:10px 12px}
-  #exSlider{width:130px}
+  #console{bottom:14px;gap:8px;padding:6px 10px}
+  #exSlider{width:100px}
 }
 </style>
 </head>
 <body>
 
 <div id="loader">
-  <div class="l-brand">AXIS AEROENGINE CO.</div>
+  <div class="l-brand">沐晴制作 · MUQING WORKS</div>
   <div class="l-model">AXIS<b>-9</b></div>
   <div class="l-sub">正在装配发动机 · ASSEMBLING</div>
   <div class="l-bar"><i></i></div>
@@ -252,7 +263,7 @@ body::after{
 <div id="stage"></div>
 
 <header id="brand" class="panel corner">
-  <div class="b-co">AXIS AEROENGINE CO.</div>
+  <div class="b-co">沐晴制作 · MUQING WORKS</div>
   <h1>AXIS<b>-9</b> TURBOFAN</h1>
   <div class="b-cn">高涵道比涡扇发动机 · 交互式结构展台</div>
   <div class="b-line"><span>INTERACTIVE</span><span>3D EXPLODED VIEW</span></div>
@@ -287,28 +298,32 @@ body::after{
 </div>
 
 <footer id="console" class="panel corner">
-  <div class="c-group">
-    <span class="c-label">分解</span>
-    <button class="btn" data-ex="0">组合</button>
-    <button class="btn" data-ex="0.5">展开</button>
-    <button class="btn" data-ex="1">全分解</button>
-  </div>
-  <div class="c-sep"></div>
-  <div class="c-group">
-    <input type="range" id="exSlider" min="0" max="100" value="0">
-    <span id="exVal">0%</span>
-  </div>
-  <div class="c-sep"></div>
-  <div class="c-group">
-    <button class="chip on" id="tSpin">转子运转</button>
-    <button class="chip on" id="tXray">结构剖视</button>
-    <button class="chip" id="tOrbit">自动环绕</button>
-    <button class="chip" id="tReset">复位视角</button>
+  <button id="cToggle" title="收起/展开控制台">▾ 控制台</button>
+  <div class="c-body">
+    <div class="c-group">
+      <span class="c-label">分解</span>
+      <button class="btn" data-ex="0">组合</button>
+      <button class="btn" data-ex="0.5">展开</button>
+      <button class="btn" data-ex="1">全分解</button>
+    </div>
+    <div class="c-sep"></div>
+    <div class="c-group">
+      <input type="range" id="exSlider" min="0" max="100" value="0">
+      <span id="exVal">0%</span>
+    </div>
+    <div class="c-sep"></div>
+    <div class="c-group">
+      <button class="chip on" id="tSpin">转子运转</button>
+      <button class="chip on" id="tXray">结构剖视</button>
+      <button class="chip" id="tOrbit">自动环绕</button>
+      <button class="chip" id="tReset">复位视角</button>
+    </div>
   </div>
 </footer>
 
 <div id="plate" class="panel corner">
   <div class="p-t">TYPE CERTIFICATE · 数据铭牌</div>
+  <div class="row"><span class="k">出品 PRESENTED</span><span class="v">沐晴制作</span></div>
   <div class="row"><span class="k">型号 MODEL</span><span class="v">AXIS-9000-TF</span></div>
   <div class="row"><span class="k">涵道比 BYPASS</span><span class="v">9.3 : 1</span></div>
   <div class="row"><span class="k">起飞推力 THRUST</span><span class="v">156 kN</span></div>
@@ -345,7 +360,7 @@ const stage = document.getElementById('stage');
 function failWebGL() {
   const l = document.getElementById('loader');
   l.classList.remove('done');
-  l.innerHTML = '<div class="l-brand">AXIS AEROENGINE CO.</div><div class="l-model" style="font-size:30px;color:#ff6b5e">WEBGL 不可用</div><div class="l-sub" style="max-width:420px;text-align:center;line-height:2;letter-spacing:.1em">当前浏览器或环境不支持 WebGL 渲染，无法启动 3D 展示。请使用支持硬件加速的 Chrome / Edge / Safari 打开本页面。</div>';
+  l.innerHTML = '<div class="l-brand">沐晴制作 · MUQING WORKS</div><div class="l-model" style="font-size:30px;color:#ff6b5e">WEBGL 不可用</div><div class="l-sub" style="max-width:420px;text-align:center;line-height:2;letter-spacing:.1em">当前浏览器或环境不支持 WebGL 渲染，无法启动 3D 展示。请使用支持硬件加速的 Chrome / Edge / Safari 打开本页面。</div>';
 }
 let renderer;
 try {
@@ -980,6 +995,13 @@ $('tReset').addEventListener('click', () => {
   camDesired.pos.set(13, 7, 18);
   camDesired.target.set(0.4, 0, 0);
   camFollow = true;
+});
+
+// 控制台收起/展开
+$('cToggle').addEventListener('click', () => {
+  const c = $('console');
+  const collapsed = c.classList.toggle('collapsed');
+  $('cToggle').textContent = collapsed ? '▸ 控制台' : '▾ 控制台';
 });
 
 /* ================= 结构巡览 ================= */
