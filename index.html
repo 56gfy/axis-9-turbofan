@@ -309,10 +309,12 @@ body::after{
   #brand .b-cn{display:none}
   #brand .b-line{display:none}
   #brandIntro{margin-top:7px;padding:5px 0;font-size:10.5px;letter-spacing:.16em}
-  /* 仪表读数挪到工具栏下方 */
-  #readout{top:58px;right:12px;gap:12px;padding:6px 10px}
-  #readout .r{min-width:48px}
-  #readout .r .v{font-size:14px}
+  /* 仪表读数挪到工具栏下方（紧凑版，避免挤到左侧品牌卡） */
+  #readout{top:58px;right:12px;gap:5px;padding:5px 8px}
+  #readout .r{min-width:38px;gap:2px}
+  #readout .r .k{font-size:8px;letter-spacing:.05em;white-space:nowrap}
+  #readout .r .v{font-size:12px}
+  #readout .r .v em{font-size:9px}
   /* 部件清单 → 左侧抽屉 */
   #bom{
     display:flex;top:0;left:0;bottom:0;width:min(78vw,300px);max-height:none;z-index:26;
@@ -443,7 +445,7 @@ body::after{
   <b>点击部件</b> 查看结构详情
 </div>
 
-<div id="ver">MUQING · AXIS-9 · V2.6</div>
+<div id="ver">MUQING · AXIS-9 · V2.7</div>
 
 <div id="tooltip"><span class="tt-code" id="ttCode"></span><span id="ttName"></span></div>
 <div id="partLabel"><div class="pl-tag" id="plText"></div><div class="pl-line"></div></div>
@@ -454,7 +456,7 @@ body::after{
     <div>
       <div class="i-studio">沐晴制作 · MUQING WORKS</div>
       <div class="i-title">AXIS-9 高涵道比涡扇发动机</div>
-      <div class="i-sub">交互式 3D 结构展台 · INTERACTIVE EXHIBIT · V2.6</div>
+      <div class="i-sub">交互式 3D 结构展台 · INTERACTIVE EXHIBIT · V2.7</div>
     </div>
     <button class="i-close" id="iClose">✕</button>
   </div>
